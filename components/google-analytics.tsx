@@ -5,9 +5,14 @@ import Script from 'next/script'
 export function GoogleAnalytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_ID
 
-  if (!gaId || process.env.NODE_ENV !== 'production') {
+  if (!gaId) {
+    console.log('GA: No measurement ID found')
     return null
   }
+  
+  // 一時的にデバッグ用コメント
+  console.log('GA: Measurement ID:', gaId)
+  console.log('GA: Environment:', process.env.NODE_ENV)
 
   return (
     <>
