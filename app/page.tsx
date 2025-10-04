@@ -125,12 +125,12 @@ export default function TaroboVolunteerRecruitment() {
 
           {/* ④ ヒーロー下のCTAボタン */}
           <div className="text-center mt-8 mb-12">
-            <Link href="/volunteer-form">
-              <Button className="btn-primary text-lg px-10 py-3">
-                ボランティアに応募する
-                <ArrowRight className="ml-2 h-5 w-5" />
+            <div className="space-y-2">
+              <Button disabled className="text-lg px-10 py-3 opacity-50 cursor-not-allowed">
+                募集を締め切りました
               </Button>
-            </Link>
+              <p className="text-sm text-gray-600">※10月4日をもって新規募集を終了しました</p>
+            </div>
           </div>
 
           {/* ⑤ 活動日・時間のカレンダーカード */}
@@ -624,15 +624,12 @@ export default function TaroboVolunteerRecruitment() {
                 </div>
 
                 <div className="pt-4">
-                  <Link href="/volunteer-form">
-                    <Button className="btn-primary w-full text-lg py-4">
-                      ボランティアに応募する
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </Link>
+                  <Button disabled className="w-full text-lg py-4 opacity-50 cursor-not-allowed">
+                    募集を締め切りました
+                  </Button>
                 </div>
 
-                <p className="text-xs text-gray-500 text-center">募集期間：2025年6月3日〜9月19日</p>
+                <p className="text-xs text-gray-500 text-center">募集期間：2025年6月3日〜9月19日<br /><span className="text-red-600 font-semibold">※10月4日をもって新規募集を終了しました</span></p>
               </CardContent>
             </Card>
 
@@ -676,12 +673,15 @@ export default function TaroboVolunteerRecruitment() {
               <br />
               特別な体験を共有しましょう。
             </p>
-            <Link href="/volunteer-form">
-              <Button className="btn-primary text-xl px-12 py-4">
-                今すぐ応募する
-                <ArrowRight className="ml-2 h-5 w-5" />
+            <div className="space-y-4">
+              <Button disabled className="text-xl px-12 py-4 opacity-50 cursor-not-allowed">
+                募集を締め切りました
               </Button>
-            </Link>
+              <p className="text-sm text-gray-600">
+                ※10月4日をもって新規募集を終了しました。<br />
+                多数のご応募ありがとうございました。
+              </p>
+            </div>
           </div>
         </section>
       </main>
@@ -691,12 +691,14 @@ export default function TaroboVolunteerRecruitment() {
 
       {/* ④ モバイル用スティッキーCTA */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg z-50">
-        <Link href="/volunteer-form">
-          <Button className="btn-primary w-full py-3">
-            ボランティアに応募する
-            <ArrowRight className="ml-2 h-5 w-5" />
+        <div className="space-y-2">
+          <Button disabled className="w-full py-3 opacity-50 cursor-not-allowed">
+            募集を締め切りました
           </Button>
-        </Link>
+          <p className="text-xs text-gray-600 text-center">
+            ※10月4日をもって新規募集を終了しました
+          </p>
+        </div>
       </div>
     </div>
   )

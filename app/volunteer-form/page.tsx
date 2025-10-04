@@ -60,8 +60,13 @@ export default function VolunteerApplicationForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitResult(null)
+    // 募集終了のため、フォーム送信をブロック
+    setSubmitResult({
+      success: false,
+      message: "申し訳ございません。10月4日をもちまして、新規のボランティア募集を締め切りました。多数のご応募ありがとうございました。",
+    })
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    return
 
     const form = e.currentTarget
     const formData = new FormData(form)
@@ -223,6 +228,21 @@ export default function VolunteerApplicationForm() {
               ボランティア応募フォーム
             </h1>
             <p className="text-gray-600 mt-2">必要事項をご記入の上、「応募を送信する」ボタンをクリックしてください。</p>
+          </div>
+
+          {/* 募集終了のお知らせ */}
+          <div className="mb-8 p-6 bg-red-50 border-2 border-red-200 rounded-lg">
+            <div className="flex items-start space-x-3">
+              <AlertCircle className="h-6 w-6 text-red-600 mt-0.5 flex-shrink-0" />
+              <div>
+                <h3 className="font-bold text-lg text-red-800 mb-2">募集を締め切りました</h3>
+                <p className="text-red-700">
+                  10月4日（土）をもちまして、新規のボランティア募集を終了いたしました。<br />
+                  たくさんのご応募をいただき、誠にありがとうございました。<br />
+                  お問い合わせは<Link href="/contact" className="text-blue-600 underline hover:text-blue-800">お問い合わせフォーム</Link>よりお願いいたします。
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* 送信結果メッセージ */}
@@ -739,17 +759,10 @@ export default function VolunteerApplicationForm() {
             <div className="flex justify-center pt-8">
               <Button
                 type="submit"
-                className="bg-red-500 hover:bg-red-600 text-white px-8 py-6 text-lg font-semibold shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                disabled={isSubmitting}
+                className="bg-gray-400 text-white px-8 py-6 text-lg font-semibold shadow-lg opacity-50 cursor-not-allowed"
+                disabled={true}
               >
-                {isSubmitting ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                    <span>送信中...</span>
-                  </div>
-                ) : (
-                  "応募を送信する"
-                )}
+                募集を締め切りました
               </Button>
             </div>
           </form>
