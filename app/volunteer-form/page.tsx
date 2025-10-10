@@ -189,8 +189,8 @@ export default function VolunteerApplicationForm() {
             </div>
           )}
 
-          {/* フォーム */}
-          <form onSubmit={handleSubmit} className="space-y-8">
+          {/* フォーム - 募集締め切りのため非表示 */}
+          <form onSubmit={handleSubmit} className="space-y-8 hidden">
             {/* Formspree用の隠しフィールド */}
             <input type="hidden" name="_subject" value="太郎坊チャレンジ2025 ボランティア応募" />
 
